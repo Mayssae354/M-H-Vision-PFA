@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-    
+
     public void authenticate() {
         // Business logic to orchestrate authentication
     }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 public class UniversityDataProvider {
 
     public void synchronizeUniversityData() {
-        // Specific logic to sync classes, subjects, professors from an LMS (Moodle etc.)
+        // Specific logic to sync classes, subjects, professors from an LMS (Moodle
+        // etc.)
     }
 }
