@@ -1,11 +1,11 @@
 package com.smartvision.smartvision_backend.entity.tenant;
-
+import com.smartvision.smartvision_backend.entity.tenant.Attendance;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "absence_contests")
+@Table(name = "absence_contests", schema = "univ_esisa_fes")
 @Data //getters + setters + toString + equals
 @NoArgsConstructor //constructeur vide
 @AllArgsConstructor //constructeur avec tous les champs

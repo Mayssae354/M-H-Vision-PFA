@@ -5,7 +5,7 @@ import lombok.*;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "org_config")
+@Table(name = "org_config", schema = "univ_esisa_fes")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -6,7 +6,7 @@ import java.time.ZonedDateTime;
 
 @Entity
 @Table(
-        name = "attendance",
+        name = "attendance",schema = "univ_esisa_fes",
         uniqueConstraints = @UniqueConstraint(columnNames = {"session_id", "member_cin"})
 )
 @Data

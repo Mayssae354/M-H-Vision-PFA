@@ -3,9 +3,10 @@ package com.smartvision.smartvision_backend.entity.tenant;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "subjects")
+@Table(name = "subjects", schema = "univ_esisa_fes")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -44,6 +45,9 @@ public class Subject {
 
     @Column(name = "created_at", updatable = false)
     private ZonedDateTime createdAt;
+
+    @OneToMany(mappedBy="subject")
+    private List<Session> sessions;
 
     @PrePersist
     protected void onCreate() {

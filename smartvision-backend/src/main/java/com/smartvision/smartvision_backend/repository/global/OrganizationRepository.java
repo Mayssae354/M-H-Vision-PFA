@@ -1,8 +1,8 @@
 package com.smartvision.smartvision_backend.repository.global;
 
 import com.smartvision.smartvision_backend.entity.global.Organization;
-import com.smartvision.smartvision_backend.entity.global.Organization.OrganizationType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.smartvision.smartvision_backend.entity.global.Organization.OrganizationType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -3,14 +3,16 @@ package com.smartvision.smartvision_backend.entity.tenant;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "sessions")
+@Table(name = "sessions", schema = "univ_esisa_fes")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Session {
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +46,9 @@ public class Session {
 
     @Column(name = "created_at", updatable = false)
     private ZonedDateTime createdAt;
+
+    @OneToMany(mappedBy="session")
+    private List<Attendance> attendances;
 
     @PrePersist
     protected void onCreate() {
