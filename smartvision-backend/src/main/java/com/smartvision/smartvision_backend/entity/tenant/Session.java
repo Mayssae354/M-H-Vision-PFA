@@ -2,6 +2,9 @@ package com.smartvision.smartvision_backend.entity.tenant;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.smartvision.smartvision_backend.entity.tenant.Subject;
+import com.smartvision.smartvision_backend.entity.tenant.Group;
+
 import java.time.ZonedDateTime;
 import java.util.List;
 

@@ -18,6 +18,7 @@ public class AttendanceRequest {
     @NotNull(message = "Le statut est obligatoire")
     private AttendanceStatus status;
 
+
     @NotNull(message = "La méthode de détection est obligatoire")
     private DetectionMethod detectedBy;
 
