@@ -23,7 +23,7 @@ public interface SecurityLogRepository
             LocalDateTime since);
 
     @Query("SELECT s FROM SecurityLog s " +
-            "WHERE s.isSuspicious = true " +
+            "WHERE s.suspicious = true " +
             "AND s.timestamp >= :since " +
             "ORDER BY s.timestamp DESC")
     List<SecurityLog> findSuspiciousLogs(LocalDateTime since);

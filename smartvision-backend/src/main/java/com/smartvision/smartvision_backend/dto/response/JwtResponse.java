@@ -1,9 +1,6 @@
 package com.smartvision.smartvision_backend.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -25,4 +22,12 @@ public class JwtResponse {
     private Long orgId;
     private String orgName;
     private String schema;
+
+    // Info profil selon rôle
+    private String filiere;        // étudiant
+    private String niveau;         // étudiant
+    private String apogeeCode;     // étudiant
+    private String speciality;     // professeur
+    private String grade;          // professeur
+    private String office;         // professeur
 }

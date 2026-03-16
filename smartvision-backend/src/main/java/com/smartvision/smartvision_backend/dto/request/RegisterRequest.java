@@ -2,6 +2,8 @@ package com.smartvision.smartvision_backend.dto.request;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import com.smartvision.smartvision_backend.entity.tenant.StudentProfile.Niveau;
+import com.smartvision.smartvision_backend.entity.tenant.ProfessorProfile.Grade;
 
 @Data
 public class RegisterRequest {
@@ -28,4 +30,15 @@ public class RegisterRequest {
     @NotBlank(message = "L'email est obligatoire")
     @Email(message = "Email invalide")
     private String email;
+
+    // ── Champs étudiant (optionnels selon rôle) ────────
+    private String filiere;
+    private Niveau niveau;
+    private String apogeeCode;
+    private String academicYear;
+
+    // ── Champs professeur (optionnels selon rôle) ──────
+    private String speciality;
+    private Grade grade;
+    private String office;
 }

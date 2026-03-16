@@ -6,7 +6,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "security_logs", schema = "public")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -43,7 +44,7 @@ public class SecurityLog {
     private String userAgent;
 
     @Column(name = "is_suspicious")
-    private Boolean isSuspicious = false;
+    private Boolean suspicious = false;
 
     @Column(name = "attack_type", length = 100)
     private String attackType;
@@ -56,25 +57,26 @@ public class SecurityLog {
         timestamp = LocalDateTime.now();
     }
 
-    // ── Méthodes utilitaires ───────────────────────────
     public boolean isFailedRequest() {
         return statusCode >= 400;
     }
 
     public boolean isCritical() {
-        return isSuspicious
+        return suspicious != null
+                && suspicious
                 && attackType != null
                 && (attackType.equals("SQL_INJECTION")
                 ||  attackType.equals("BRUTE_FORCE")
                 ||  attackType.equals("INTER_ORG_ACCESS"));
     }
 
-    public static SecurityLog createLog(String ip,
-                                        String endpoint,
-                                        String method,
-                                        Integer statusCode,
-                                        Integer responseMs,
-                                        String userAgent) {
+    public static SecurityLog createLog(
+            String ip,
+            String endpoint,
+            String method,
+            Integer statusCode,
+            Integer responseMs,
+            String userAgent) {
         return SecurityLog.builder()
                 .ipAddress(ip)
                 .endpoint(endpoint)
@@ -82,7 +84,7 @@ public class SecurityLog {
                 .statusCode(statusCode)
                 .responseMs(responseMs)
                 .userAgent(userAgent)
-                .isSuspicious(false)
+                .suspicious(false)
                 .build();
     }
 }
