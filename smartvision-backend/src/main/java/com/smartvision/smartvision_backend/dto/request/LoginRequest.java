@@ -13,5 +13,5 @@ public class LoginRequest {
     private String password;
 
     @NotBlank(message = "L'organisation est obligatoire")
-    private String orgId;
+    private long orgId;
 }
