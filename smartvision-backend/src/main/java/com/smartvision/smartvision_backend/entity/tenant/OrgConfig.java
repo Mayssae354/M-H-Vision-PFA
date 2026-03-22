@@ -30,7 +30,7 @@ public class OrgConfig {
 
     @PrePersist
     @PreUpdate
-    protected void onUpdate() {
+    public void onUpdate() {
         updatedAt = ZonedDateTime.now();
     }
 }

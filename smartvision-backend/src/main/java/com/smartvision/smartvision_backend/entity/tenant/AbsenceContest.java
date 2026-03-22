@@ -46,7 +46,7 @@ public class AbsenceContest {
     private ZonedDateTime createdAt;
 
     @PrePersist
-    protected void onCreate() {
+    public void onCreate() {
         createdAt = ZonedDateTime.now();
     }
 

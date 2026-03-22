@@ -36,7 +36,7 @@ public class StudentInfoResponse {
     private String role;
     private String memberStatus; // ACTIVE, SUSPENDED, PENDING
     private ZonedDateTime joinedAt;
-    private LocalDateTime suspendedAt;
+    private ZonedDateTime  suspendedAt;
     
     // Infos académiques
     private Long groupId;

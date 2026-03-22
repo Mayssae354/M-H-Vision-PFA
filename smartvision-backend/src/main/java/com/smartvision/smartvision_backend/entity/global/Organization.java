@@ -48,7 +48,7 @@ public class Organization {
     private ZonedDateTime updatedAt;
 
     @PrePersist
-    protected void onCreate() {
+    public void onCreate() {
         createdAt = ZonedDateTime.now();
         updatedAt = ZonedDateTime.now();
     }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +32,7 @@ public class OverlayDataResponse {
     private String subjectCode;
 
     // Group info
+    private Long groupId;
     private String groupName;
     private String groupCode;
 
@@ -40,13 +42,15 @@ public class OverlayDataResponse {
     // Live counters for overlay display
     private int totalExpected;
     private int detectedCount;
-    private double detectionRate; // percentage 0.0 - 100.0
+    private double detectionRate;
 
-    // Detected students list
-    private List<DetectedStudentInfo> detectedStudents;
+    // Detected students list (PRESENT + LATE)
+    @Builder.Default
+    private List<DetectedStudentInfo> detectedStudents = new ArrayList<>();
 
-    // Liste des étudiants avec leur statut temps réel
-    private List<StudentInfoResponse> students;
+    // Liste complète des étudiants du groupe avec statut
+    @Builder.Default
+    private List<StudentInfoResponse> students = new ArrayList<>();
 
     // Stats live
     private int totalStudents;
@@ -55,15 +59,16 @@ public class OverlayDataResponse {
     private double attendanceRate;
 
     // Alerte : étudiants ayant dépassé le seuil d'absences
-    private List<String> alertStudentCins;
+    @Builder.Default
+    private List<String> alertStudentCins = new ArrayList<>();
 
-    private Long groupId;
-
-    // clé = statut (PRESENT / ABSENT / JUSTIFIED), valeur = nombre d’étudiants
+    // clé = statut (PRESENT / ABSENT / JUSTIFIED), valeur = nombre
     private Map<String, Integer> attendanceSummary;
 
-    // date ou période de l’overlay
+    // date ou période de l'overlay
     private String period;
+
+    // ── Classe imbriquée ──────────────────────────────────────────────────────
 
     @Data
     @Builder
@@ -71,13 +76,13 @@ public class OverlayDataResponse {
     @AllArgsConstructor
     public static class DetectedStudentInfo {
 
-        // From User (global schema)
+        // Depuis User (global schema)
         private String cin;
         private String firstName;
         private String lastName;
         private String profilePhoto;
 
-        // From Attendance (tenant schema)
+        // Depuis Attendance (tenant schema)
         private AttendanceStatus attendanceStatus;
         private DetectionMethod detectedBy;
         private Float confidence;
